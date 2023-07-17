@@ -1,11 +1,11 @@
 package main
 
 import (
-	"leetcode/divideandconquer"
+	"leetcode/greedy"
 )
 
 func main() {
 	//linklist.Problem21()
 	//hashmap.Problem1()
-	divideandconquer.Offer51()
+	greedy.Problem455()
 }
