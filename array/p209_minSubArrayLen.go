@@ -2,9 +2,11 @@ package array
 
 import (
 	"fmt"
-	"leetcode/divideandconquer"
 	"math"
 )
+
+// 209. 和≥target长度最小的子数组
+// https://leetcode.cn/problems/minimum-size-subarray-sum/
 
 func Problem209() {
 	target := 7
@@ -13,9 +15,11 @@ func Problem209() {
 	fmt.Println(minSubArrayLen_smoothWindow(target, nums))
 }
 
-//209. 和≥target长度最小的子数组
-
 // 滑动窗口法
+// 使用两个指针 start 和 end 来表示一个滑动窗口 开始时，两个指针都指向数组的第一个元素。
+// 然后，我们通过移动 end 指针，不断扩大窗口，直到窗口内元素的和大于或等于 target 为止。
+// 此时，我们记录当前窗口的长度，并尝试将窗口缩小（移动 start 指针），使得窗口内元素的和尽可能小，但仍然保持大于或等于 target。
+// 时间复杂度O(n)
 func minSubArrayLen_smoothWindow(target int, nums []int) int {
 	n := len(nums)
 	if n == 0 {
@@ -27,7 +31,7 @@ func minSubArrayLen_smoothWindow(target int, nums []int) int {
 	for end < n {
 		sum += nums[end]
 		for sum >= target {
-			lens = divideandconquer.min(lens, end-start+1)
+			lens = Min(lens, end-start+1)
 			sum -= nums[start]
 			start++
 		}
@@ -51,7 +55,7 @@ func minSubArrayLen_BF(target int, nums []int) int {
 		for j := i; j < n; j++ {
 			sum += nums[j]
 			if sum >= target {
-				lens = divideandconquer.min(j-i+1, lens)
+				lens = Min(j-i+1, lens)
 				break
 			}
 		}
@@ -60,4 +64,11 @@ func minSubArrayLen_BF(target int, nums []int) int {
 		return 0
 	}
 	return lens
+}
+
+func Min(x, y int) int {
+	if x < y {
+		return x
+	}
+	return y
 }

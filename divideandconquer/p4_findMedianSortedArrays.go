@@ -87,10 +87,10 @@ func findKth(n1, n2 []int, k int) int {
 		return n2[k-1]
 	}
 	if k == 1 { //特殊情况
-		return min(n1[0], n2[0])
+		return Min(n1[0], n2[0])
 	}
 
-	k1 := min(k/2, l1) //考虑到l1可能大于k/2
+	k1 := Min(k/2, l1) //考虑到l1可能大于k/2
 	k2 := k - k1
 
 	// 分治核心思想
@@ -104,7 +104,7 @@ func findKth(n1, n2 []int, k int) int {
 		return n1[k1-1]
 	}
 }
-func min(x, y int) int {
+func Min(x, y int) int {
 	if x < y {
 		return x
 	}
