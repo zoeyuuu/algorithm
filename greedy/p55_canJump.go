@@ -16,6 +16,7 @@ func canJump(nums []int) bool {
 	n := len(nums)
 	maxIndex := 0
 	temp := 0
+	// 覆盖范围的判断条件直接加在大循环里
 	for i := 0; i <= maxIndex && i < n; i++ {
 		// 第一次错写成了temp = maxIndex + nums[i]
 		temp = i + nums[i]
