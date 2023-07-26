@@ -1,4 +1,4 @@
-package huawei
+package interview
 
 // https://www.nowcoder.com/practice/fe298c55694f4ed39e256170ff2c205f?tpId=37&tqId=21245&ru=/exam/oj
 // 三个空汽水瓶可以换一瓶汽水，允许向老板借空汽水瓶（但是必须要归还）。

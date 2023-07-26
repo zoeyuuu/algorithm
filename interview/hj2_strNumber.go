@@ -1,4 +1,4 @@
-package huawei
+package interview
 
 import (
 	"bufio"

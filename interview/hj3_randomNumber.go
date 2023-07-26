@@ -1,4 +1,4 @@
-package huawei
+package interview
 
 // 根据输入条件 用一个数组存储所有出现的数
 // 然后遍历一遍 输出

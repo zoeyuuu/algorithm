@@ -20,7 +20,7 @@ func canJump(nums []int) bool {
 	for i := 0; i <= maxIndex && i < n; i++ {
 		// 第一次错写成了temp = maxIndex + nums[i]
 		temp = i + nums[i]
-		maxIndex = max(maxIndex, temp)
+		maxIndex = Max(maxIndex, temp)
 	}
 	if maxIndex >= n-1 {
 		return true
@@ -28,7 +28,7 @@ func canJump(nums []int) bool {
 	return false
 }
 
-func max(x, y int) int {
+func Max(x, y int) int {
 	if x < y {
 		return y
 	}
