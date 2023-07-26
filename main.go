@@ -7,5 +7,5 @@ import (
 func main() {
 	//linklist.Problem21()
 	//hashmap.Problem1()
-	greedy.Problem1005()
+	greedy.Problem860()
 }
