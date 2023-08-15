@@ -42,7 +42,7 @@ func maxSubArray2(nums []int) int {
 		sum = 0 //内层循环完sum需要清零
 		for j := i; j < len(nums); j++ {
 			sum += nums[j]
-			result = max(result, sum)
+			result = Max(result, sum)
 		}
 	}
 	return result

@@ -47,7 +47,7 @@ func jump2(nums []int) int {
 	cur, next := 0, 0
 	step := 0
 	for i := 0; i < n-1; i++ {
-		next = max(nums[i]+i, next)
+		next = Max(nums[i]+i, next)
 		if i == cur {
 			//下一步能到达的最远距离
 			cur = next
