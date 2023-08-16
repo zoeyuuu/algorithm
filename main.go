@@ -1,11 +1,9 @@
 package main
 
-import (
-	"leetcode/greedy"
-)
+import "leetcode/dfs"
 
 func main() {
 	//linklist.Problem21()
 	//hashmap.Problem1()
-	greedy.Problem452()
+	dfs.Problem827()
 }
