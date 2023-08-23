@@ -13,10 +13,13 @@ func Problem144() {
 	root.Right.Left = &TreeNode{Val: 6}
 	root.Right.Right = &TreeNode{Val: 7}
 
-	res := preorderTraversal(root)
-	fmt.Println(res)
+	res1 := preorderTraversal1(root)
+	res2 := preorderTraversal2(root)
+	fmt.Println(res1, res2)
 }
-func preorderTraversal(root *TreeNode) (res []int) {
+
+// 递归
+func preorderTraversal1(root *TreeNode) (res []int) {
 	var preorder func(*TreeNode) //声明一个函数类型的变量
 	preorder = func(node *TreeNode) {
 		if node == nil {
@@ -27,5 +30,24 @@ func preorderTraversal(root *TreeNode) (res []int) {
 		preorder(node.Right)
 	}
 	preorder(root)
+	return
+}
+
+// 前序遍历 迭代法
+// 一直
+func preorderTraversal2(root *TreeNode) (res []int) {
+	stack := []*TreeNode{}
+	p := root
+	for p != nil || len(stack) > 0 {
+		// 一直向左
+		for p != nil {
+			res = append(res, p.Val) //先访问
+			stack = append(stack, p) //入栈
+			p = p.Left               //向左
+		}
+		p = stack[len(stack)-1]      //出栈
+		stack = stack[:len(stack)-1] //0~len(stack-2)
+		p = p.Right                  //转向右子树 (注意转向右子树的时候都是出栈的结点的右子树)
+	}
 	return
 }
