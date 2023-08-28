@@ -7,5 +7,5 @@ import (
 func main() {
 	//linklist.Problem21()
 	//hashmap.Problem1()
-	binarytree.Problem144()
+	binarytree.Problem102()
 }
