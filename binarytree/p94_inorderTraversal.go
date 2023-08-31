@@ -19,6 +19,7 @@ func Problem94() {
 }
 
 // 递归算法
+// 使用内部函数inorder的既实现了递归又维护了一个全局变量res
 func inorderTraversal1(root *TreeNode) (res []int) {
 	var inorder func(*TreeNode)
 	inorder = func(node *TreeNode) {
