@@ -4,7 +4,7 @@ import "fmt"
 
 // 层序遍历
 // https://leetcode.cn/problems/binary-tree-level-order-traversal/description/
-// 可用于解决？：求节点的双亲、孩子节点、二叉树深度、叶子节点个数、判断两棵二叉树是否相等
+// 这个层序遍历：对于每一层的结点用一个for循环遍历 可以作为通用解法
 
 func Problem102() {
 	root := &TreeNode{Val: 1}
@@ -26,7 +26,7 @@ func levelOrderTraversal(root *TreeNode) [][]int {
 		return res
 	}
 	q := []*TreeNode{root} //根节点初始化队列
-	// 外层循环用来遍历二叉树的层级
+	// 外层循环用来遍历二叉树的层级 注意条件是len(q) > 0
 	for i := 0; len(q) > 0; i++ {
 		res = append(res, []int{}) //创建一个新的空的整数切片 存当前层
 		p := []*TreeNode{}         // 建立一个新队列用于下一层

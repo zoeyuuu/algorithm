@@ -5,6 +5,6 @@ import "leetcode/binarytree"
 func main() {
 	//linklist.Problem21()
 	//hashmap.Problem1()
-	binarytree.Problem104()
+	binarytree.Problem222()
 
 }
