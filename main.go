@@ -1,12 +1,12 @@
 package main
 
 import (
-	"leetcode/DP"
+	"leetcode/binarytree"
 )
 
 func main() {
 	//linklist.Problem21()
 	//hashmap.Problem1()
-	DP.Problem343()
+	binarytree.Problem98()
 
 }
