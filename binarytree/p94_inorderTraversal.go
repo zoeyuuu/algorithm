@@ -12,7 +12,6 @@ func Problem94() {
 	root.Left.Right = &TreeNode{Val: 5}
 	root.Right.Left = &TreeNode{Val: 6}
 	root.Right.Right = &TreeNode{Val: 7}
-
 	res1 := inorderTraversal1(root)
 	res2 := inorderTraversal2(root)
 	fmt.Println(res1, res2)
