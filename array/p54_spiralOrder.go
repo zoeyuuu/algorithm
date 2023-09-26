@@ -1,6 +1,9 @@
 package array
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 // 54. 螺旋矩阵I meidum (p59 II)
 // https://leetcode.cn/problems/spiral-matrix/description/
@@ -13,7 +16,7 @@ import "fmt"
 
 func Problem54() {
 	matrix := [][]int{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}
-	fmt.Println(spiralOrder(matrix))
+	fmt.Println(spiralOrder1(matrix))
 }
 
 // 四个方向循环/边界改变 上下界和判断条件要注意
@@ -53,6 +56,35 @@ func spiralOrder(matrix [][]int) (res []int) {
 		if left++; left > right {
 			break
 		}
+	}
+	return res
+}
+
+// 使用p59的方法
+type pairs struct {
+	x, y int
+}
+
+// 转向路径
+var paths = []pairs{{0, 1}, {1, 0}, {0, -1}, {-1, 0}}
+
+func spiralOrder1(matrix [][]int) []int {
+	m, n := len(matrix), len(matrix[0])
+	res := make([]int, 0, m*n)
+	row, col, pathIndex := 0, 0, 0
+	for i := 1; i <= m*n; i++ {
+		res = append(res, matrix[row][col])
+		matrix[row][col] = math.MaxInt32
+		// 下一个方向
+		x, y := paths[pathIndex].x, paths[pathIndex].y
+		// 下一个位置越界或者已访问过
+		if row+x >= m || row+x < 0 || col+y >= n || col+y < 0 || matrix[row+x][col+y] == math.MaxInt32 {
+			// 改变方向
+			pathIndex = (pathIndex + 1) % 4
+			x, y = paths[pathIndex].x, paths[pathIndex].y
+		}
+		// 保持原方向或转向
+		row, col = row+x, col+y
 	}
 	return res
 }

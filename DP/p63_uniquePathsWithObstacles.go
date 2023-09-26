@@ -26,7 +26,7 @@ func uniquePathsWithObstacles(obstacleGrid [][]int) int {
 	}
 	for i := 1; i < m; i++ {
 		for j := 1; j < n; j++ {
-			// 如果该处是障碍则跳过
+			// 如果该处是障碍则跳过 跳过本身初值就是0
 			if obstacleGrid[i][j] == 1 {
 				continue
 			}
