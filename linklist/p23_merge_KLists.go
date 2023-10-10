@@ -1,6 +1,7 @@
 package linklist
 
-// 合并K个排序链表
+// 23 合并K个排序链表 hard
+// https://leetcode.cn/problems/merge-k-sorted-lists/description/
 
 func Problem23() {
 	l1 := &ListNode{Val: 1}
