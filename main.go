@@ -9,5 +9,5 @@ func main() {
 	//hashmap.Problem1()
 	//binarytree.Problem513()
 	//array.Problem240()
-	DP.Problem494()
+	DP.Problem72()
 }
