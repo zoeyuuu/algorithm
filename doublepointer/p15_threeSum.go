@@ -5,7 +5,8 @@ import (
 	"sort"
 )
 
-// 15 三数之和
+// 15 三数之和 medium
+// https://leetcode.cn/problems/3sum/description/
 // threeSum1/threeSum2三重循环暴力解法能通过95%
 // threeSum3使用双指针法
 
@@ -59,6 +60,14 @@ func threeSum2(nums []int) [][]int {
 		}
 	}
 	return ans
+}
+func threesum3(nums []int) [][]int {
+	var ans [][]int
+	// 先遍历 存储map value-index
+	mp := map[int]int{}
+	for i, value := range nums {
+		mp[value] = i
+	}
 }
 
 func sortThree(nums []int) []int {
