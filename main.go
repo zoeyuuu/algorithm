@@ -10,6 +10,6 @@ func main() {
 	//binarytree.Problem513()
 	//array.Problem240()
 	//doublepointer.Problem18()
-	MonotoneStack.Problem739()
+	MonotoneStack.Problem503()
 	//DP.Problem322()
 }
