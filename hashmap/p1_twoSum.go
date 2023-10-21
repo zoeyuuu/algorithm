@@ -4,6 +4,7 @@ import "fmt"
 
 // 1 两数之和 easy
 // https://leetcode.cn/problems/two-sum/description/
+// 返回下标
 
 func Problem1() {
 	nums := []int{2, 7, 11, 15}

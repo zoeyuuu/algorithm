@@ -3,7 +3,7 @@ package DP
 import "fmt"
 
 // https://leetcode.cn/problems/coin-change-ii/description/
-// 518. 零钱兑换 II
+// 518. 零钱兑换 II (I 322)
 // 完全背包
 // 计算装满背包的方式时 遍历顺序有关
 // **如果求组合数就{1，2}是外层for循环遍历物品（物品是有序的）**  p518 本题
