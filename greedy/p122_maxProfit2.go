@@ -4,6 +4,7 @@ import "fmt"
 
 // 122 买卖股票的最佳时期2 medium
 // https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/
+// 方法1.贪心 最适合  2.动态规划 些许复杂 为后续难题服务(见dp maxProfit2)
 
 func Problem122() {
 	nums := []int{7, 1, 5, 3, 6, 4}
