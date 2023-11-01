@@ -6,33 +6,35 @@ package backtracking
 import "fmt"
 
 func Problem17() {
-	var digits string = "2"
+	var digits string = "23"
 	fmt.Println(letterCombination(digits))
 }
 
-var mp map[string]string = map[string]string{
-	"2": "abc",
-	"3": "def",
-	"4": "ghi",
-	"5": "jkl",
-	"6": "mno",
-	"7": "pqrs",
-	"8": "tuv",
-	"9": "wxyz",
-}
-
+// 终止条件是i和n进行比较
 func letterCombination(digits string) (ans []string) {
+	mp := map[string]string{
+		"2": "abc",
+		"3": "def",
+		"4": "ghi",
+		"5": "jkl",
+		"6": "mno",
+		"7": "pqrs",
+		"8": "tuv",
+		"9": "wxyz",
+	}
 	n := len(digits)
 	if n == 0 {
 		return
 	}
 	path := make([]byte, n)
-	var dfs func(i int) //函数变量
+	var dfs func(i int)
 	dfs = func(i int) {
-		if i == n { //最后一个数字确定
+		//在下一层写递归终止条件
+		if i == n {
 			ans = append(ans, string(path))
 			return
 		}
+		// byte转成string类型 查找map的键
 		digit := string(digits[i])
 		letters := mp[digit]
 		for k := 0; k < len(letters); k++ {
@@ -40,6 +42,7 @@ func letterCombination(digits string) (ans []string) {
 			dfs(i + 1)
 		}
 	}
+	// i是下标
 	dfs(0)
 	return
 }

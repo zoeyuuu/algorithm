@@ -1,6 +1,6 @@
 package main
 
-import "leetcode/DP"
+import "leetcode/backtracking"
 
 func main() {
 	//linklist.Problem21()
@@ -9,6 +9,7 @@ func main() {
 	//array.Problem240()
 	//doublepointer.Problem18()
 	//MonotoneStack.Problem42()
-	DP.Problem121()
+	//DP.Problem188()
 	//string.Problem198()
+	backtracking.Problem40()
 }
