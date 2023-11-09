@@ -31,6 +31,7 @@ func numIslands(grid [][]byte) int {
 	return ans
 }
 
+// 深度遍历该岛屿的所有地点 改’1‘为’2‘
 // dfs终止条件 1：超出边界 2：海洋or遍历过
 func dfsIsland200(grid [][]byte, i, j int) {
 	inArea := 0 <= i && i < len(grid) && 0 <= j && j < len(grid[0])
