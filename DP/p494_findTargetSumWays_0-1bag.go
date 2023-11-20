@@ -5,9 +5,10 @@ import (
 	"math"
 )
 
-// 494. 目标和 medium
-// 方法一：0/1 背包 方法二：回溯 （如果要求目标和组合的具体形式 只能用回溯）
+// 494. 目标和 medium  2023-09-05 17
 // https://leetcode.cn/problems/target-sum/description/
+// 方法一：0/1 背包
+// 方法二：回溯 （如果要求目标和组合的具体形式 只能用回溯）
 // 题意理解：因为是非负整数数组 找到正数组合p + 负数组合q 使得
 // p-q=target;p+q=sum 有p=(sum+target)/2
 // dp[j](dp[i][j])表示 下标0~i的数字装满大小为j的背包的 组合种类数
@@ -39,4 +40,21 @@ func findTargetSumWays(nums []int, target int) int {
 		}
 	}
 	return dp[p]
+}
+
+// 回溯法 简单 能通过
+func findTargetSumWays1(nums []int, target int) (count int) {
+	var backtrack func(int, int)
+	backtrack = func(index, sum int) {
+		if index == len(nums) {
+			if sum == target {
+				count++
+			}
+			return
+		}
+		backtrack(index+1, sum+nums[index])
+		backtrack(index+1, sum-nums[index])
+	}
+	backtrack(0, 0)
+	return
 }

@@ -20,7 +20,7 @@ func Problem77() {
 func combine1(n, k int) [][]int {
 	var res [][]int
 	// path初始化不能用path:=make([]int,k) 否则一开始就有k的长度直接退出
-	path1 := []int{}
+	path1 := make([]int, 0, k)
 	var dfs func(startIndex int)
 	dfs = func(startIndex int) {
 		if len(path1) == k {
