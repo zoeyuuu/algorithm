@@ -1,9 +1,5 @@
 package main
 
-import (
-	"leetcode/backtracking"
-)
-
 func main() {
 	//linklist.Problem21()
 	//hashmap.Problem1()
@@ -13,6 +9,6 @@ func main() {
 	//MonotoneStack.Problem42()
 	//DP.Problem188()
 	//string.Problem198()
-	backtracking.Problem51()
+	//backtracking.Problem51()
 	//sort.Problem75()
 }
