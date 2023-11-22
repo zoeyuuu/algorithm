@@ -17,11 +17,11 @@ func Problem51() {
 }
 
 // 声明全局变量用于保存结果
-var res [][]string
+var res1 [][]string
 
 func solveNQueens(n int) [][]string {
 	// 在线编程平台可能会保持运行环境的状态 重置全局变量
-	res = [][]string{}
+	res1 = [][]string{}
 	path := make([]int, 0, n)
 	// 列
 	columns := make(map[int]bool)
@@ -30,14 +30,14 @@ func solveNQueens(n int) [][]string {
 	// 副对角线()
 	diagonals2 := make(map[int]bool)
 	dfsNQueens(n, 0, path, columns, diagonals1, diagonals2)
-	return res
+	return res1
 }
 
 // n是棋盘大小;row是处理的行;path是已经摆放的皇后的列号;columns, diagonals1, diagonals2分别是不能摆放的位置;res是最终结果
 func dfsNQueens(n, row int, path []int, columns, diagonals1, diagonals2 map[int]bool) {
 	if row == n {
 		board := generateBoard(n, path)
-		res = append(res, board)
+		res1 = append(res1, board)
 		return
 	}
 	// i是列号
