@@ -8,7 +8,7 @@ import "fmt"
 // 最终如果 i 移动到 s 的末尾，就说明 s 是 t 的子序列
 
 func Problem392() {
-	s := "abc"
+	s := "abce"
 	t := "ahbgdc"
 	fmt.Println(isSubsequence(s, t))
 }
