@@ -5,6 +5,7 @@ import (
 )
 
 // 491. 递增子序列 medium
+// https://leetcode.cn/problems/non-decreasing-subsequences/description/
 // 与p78 p90求子集类似
 // 1.类似求的是子集 需要在递归每一个结点存储结果（题目要求>=2）
 // 2.递增子序列条件： 遍历到nums[i]>=path[-1] --- if len(path) > 0 && nums[i] < path[len(path)-1] { continue }

@@ -8,7 +8,7 @@ import "fmt"
 // 贪心算法局部最优解：每次取最大跳跃步数（取最大覆盖范围），整体最优解：最后得到整体最大覆盖范围，看是否能到终点。
 
 func Problem55() {
-	nums := []int{3, 2, 1, 0, 4}
+	nums := []int{-2, 1, -3, 4, -1, 2, 1, -5, 4}
 	fmt.Println(canJump(nums))
 }
 

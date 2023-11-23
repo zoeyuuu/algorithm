@@ -1,8 +1,6 @@
 package main
 
-import (
-	"leetcode/dfs"
-)
+import "leetcode/greedy"
 
 func main() {
 	//linklist.Problem21()
@@ -11,8 +9,9 @@ func main() {
 	//array.Problem240()
 	//doublepointer.Problem200()
 	//MonotoneStack.Problem42()
-	//DP.Problem188()
+	//DP.Problem55()
 	//string.Problem198()
-	dfs.Problem79()
+	//dfs.Problem79()
 	//sort.Problem75()
+	greedy.Problem53()
 }

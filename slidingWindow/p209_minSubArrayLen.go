@@ -1,11 +1,11 @@
-package array
+package slidingWindow
 
 import (
 	"fmt"
 	"math"
 )
 
-// 209. 和≥target长度最小的子数组
+// 209. 和≥target长度最小的子数组 2023-08-10 49
 // https://leetcode.cn/problems/minimum-size-subarray-sum/
 
 func Problem209() {
@@ -26,16 +26,14 @@ func minSubArrayLen_smoothWindow(target int, nums []int) int {
 		return 0
 	}
 	lens := math.MaxInt32
-	start, end := 0, 0
-	sum := nums[0]
-	for end < n {
+	sum := 0
+	for start, end := 0, 0; end < n; end++ {
 		sum += nums[end]
 		for sum >= target {
 			lens = Min(lens, end-start+1)
 			sum -= nums[start]
 			start++
 		}
-		end++
 	}
 	if lens == math.MaxInt32 {
 		return 0
