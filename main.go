@@ -1,6 +1,6 @@
 package main
 
-import "leetcode/DP"
+import "leetcode/sort"
 
 func main() {
 	//linklist.Problem21()
@@ -9,9 +9,9 @@ func main() {
 	//array.Problem240()
 	//doublepointer.Problem200()
 	//MonotoneStack.Problem42()
-	DP.Problem115()
+	//DP.Problem115()
 	//string.Problem198()
 	//dfs.Problem79()
-	//sort.Problem75()
+	sort.ProblemMergesort()
 	//greedy.Problem53()
 }

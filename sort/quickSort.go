@@ -11,6 +11,8 @@ var rng = rand.New(rand.NewSource(time.Now().UnixNano()))
 
 // 快速排序 Problem912全部重复的时候好像过不了
 // 随机化pivot位置提升性能
+// 时间复杂度：O(nlogn)
+// 空间复杂度：O(logn)
 
 func ProblemQuicksort() {
 	nums := []int{3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5}
@@ -21,6 +23,7 @@ func ProblemQuicksort() {
 func quicksort(nums []int, low, high int) {
 	if low < high {
 		// 递归对分区点左右两侧进行快速排序
+		// 每一次划分确定一个pivot的位置
 		pivot := partition(nums, low, high)
 		quicksort(nums, low, pivot-1)
 		quicksort(nums, pivot+1, high)
