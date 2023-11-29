@@ -2,7 +2,7 @@ package hashmap
 
 import "fmt"
 
-// 41. 缺失的第一个正数 hard
+// 41. 缺失的第一个正数 hard 2023-08-28 97
 // 给你一个未排序的整数数组 nums ，请你找出其中没有出现的最小的正整数。
 // 请你实现时间复杂度为 O(n) 并且只使用常数级别额外空间的解决方案。 (原地哈希 方法二)
 
@@ -32,6 +32,7 @@ func firstMissingPositive(nums []int) int {
 	return n + 1
 }
 
+// 原地哈希
 // 使用数组本身作为哈希表（nums[i]=i+1代表i+1出现过） 不需要额外的空间复杂度
 // 数组长度n，下标0~n-1用来表示1~n是否存在 注意下标比值小一
 // 定义nums[i]=i+1代表i+1存在 遇到1<=nums[i]<=N  将(-1转换为下标)nums[i]-1下标的值改为nums[i]
@@ -40,9 +41,8 @@ func firstMissingPositive(nums []int) int {
 func firstMissingPositive2(nums []int) int {
 	n := len(nums)
 	for i := 0; i < n; i++ {
-		// 遇到nums[i]先检查是否在1~n内 若在检查对应下标的哈希值是否等于i+1
-		// 如果不等于 那么交换nums[i]和nums[index]的值(防止覆盖) 继续处理新的nums[i]的值
-		// nums[nums[i]-1] ？= nums[i]-1 + 1 保证哈希表值正确
+		// 遇到nums[i]先检查是否在1~n内 若在检查其是否在正确位置(index = value-1)
+		// 如果不在正确位置 那么与正确位置的元素交换并继续处理正确位置的元素
 		for nums[i] > 0 && nums[i] <= n && nums[nums[i]-1] != nums[i] {
 			nums[nums[i]-1], nums[i] = nums[i], nums[nums[i]-1]
 		}
