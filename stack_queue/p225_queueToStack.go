@@ -2,7 +2,7 @@ package stack_queue
 
 import "fmt"
 
-// 225. 用队列实现栈 2022-10-30 29
+// 225. 用队列实现栈 medium 2022-10-30 29
 // https://leetcode.cn/problems/implement-queue-using-stacks/description/
 
 func Problem225() {

@@ -2,7 +2,7 @@ package stack_queue
 
 import "fmt"
 
-// 232. 用栈实现队列 2023-10-26 120
+// 232. 用栈实现队列 medium 2023-10-26 120
 // https://leetcode.cn/problems/implement-queue-using-stacks/description/
 // 思路：双栈
 // 将一个栈当作输入栈，用于压入 push 传入的数据；另一个栈当作输出栈，用于 pop 和 peek 操作。
