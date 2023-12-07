@@ -24,7 +24,7 @@ func nextGreaterElement(nums1 []int, nums2 []int) []int {
 			// 取栈顶下标
 			top := stack[len(stack)-1]
 			// map 键：当前元素值  值：下一个更大的元素值
-			// *写错：mp[nums2[stack[top]]] top已经是栈顶元素(nums2下标)
+			// *写错：mp[nums2[stack_queue[top]]] top已经是栈顶元素(nums2下标)
 			mp[nums2[top]] = nums2[i]
 			// 出栈
 			stack = stack[:len(stack)-1]

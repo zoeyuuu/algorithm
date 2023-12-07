@@ -25,7 +25,7 @@ func dailyTemperatures1(temperatures []int) []int {
 	var stack []int
 	for i, v := range temperatures {
 		// 栈空 or 遍历元素小于等于栈顶元素 直接入栈
-		// 注意判断条件 temperatures[stack[len(stack)-1]] 第一次写错 stack[len(stack)-1]存的是下标 比较的是元素
+		// 注意判断条件 temperatures[stack_queue[len(stack_queue)-1]] 第一次写错 stack_queue[len(stack_queue)-1]存的是下标 比较的是元素
 		for len(stack) != 0 && v > temperatures[stack[len(stack)-1]] {
 			// 取栈顶下标
 			top := stack[len(stack)-1]

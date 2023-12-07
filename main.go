@@ -1,6 +1,6 @@
 package main
 
-import "leetcode/sort"
+import "leetcode/stack_queue"
 
 func main() {
 	//linklist.Problem21()
@@ -12,6 +12,7 @@ func main() {
 	//DP.Problem115()
 	//string.Problem198()
 	//dfs.Problem79()
-	sort.ProblemMergesort()
+	//sort.ProblemMergesort()
 	//greedy.Problem53()
+	stack_queue.Problem232()
 }

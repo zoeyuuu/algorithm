@@ -46,7 +46,7 @@ func preorderTraversal2(root *TreeNode) (res []int) {
 			p = p.Left               //向左
 		}
 		p = stack[len(stack)-1]      //出栈
-		stack = stack[:len(stack)-1] //0~len(stack-2)
+		stack = stack[:len(stack)-1] //0~len(stack_queue-2)
 		p = p.Right                  //转向右子树 (注意转向右子树的时候都是出栈的结点的右子树)
 	}
 	return
