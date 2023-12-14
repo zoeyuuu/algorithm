@@ -1,8 +1,6 @@
 package main
 
-import (
-	"leetcode/MonotoneStack"
-)
+import "leetcode/heap"
 
 func main() {
 	//linklist.Problem146()
@@ -16,5 +14,6 @@ func main() {
 	//dfs.Problem79()
 	//sort.ProblemMergesort()
 	//greedy.Problem53()
-	MonotoneStack.Problem84()
+	//MonotoneStack.Problem84()
+	heap.InterfaceExample()
 }

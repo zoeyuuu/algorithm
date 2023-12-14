@@ -20,7 +20,7 @@ func Problem1046() {
 // 实现heap.Interface的接口
 // 1.创建一个包含整数切片的结构体 2.实现heap.Interface接口的方法：
 // Ctrl+I 输入interface(heap) 快速实现heap.Interface接口的5个方法 其中Push/Pop方法接收者类型为指针
-// 3.创建一个空堆、初始化堆 4.堆中push和pop使用heap.Push(q, v)、heap.Pop(q)而不是自写的
+// 3.创建一个空堆、初始化堆 4.堆中push和pop使用heap.Push(q, v)、heap.Pop(q)即可调用自己写的Push\Pop方法
 
 type IntHeap []int
 
