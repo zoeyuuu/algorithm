@@ -16,6 +16,8 @@ func Problem215() {
 	fmt.Println(findKthLargest1(nums, k))
 	fmt.Println(findKthLargest2(nums, k))
 }
+
+// 自己写堆 见heap_self.go
 func findKthLargest1(nums []int, k int) int {
 	BuildMaxHeap(nums)
 	fmt.Println(nums)
@@ -25,6 +27,7 @@ func findKthLargest1(nums []int, k int) int {
 	return pop(&nums)
 }
 
+// 实现heap.interface接口
 func findKthLargest2(nums []int, k int) int {
 	h := IntHeap(nums)
 	heap.Init(&h)
