@@ -6,6 +6,7 @@ import (
 	"sort"
 )
 
+// 347. 前 K 个高频元素 2023-08-29 25
 // https://leetcode.cn/problems/top-k-frequent-elements/
 // 方法一： 先统计出现频率 直接使用sort.Slice排序 时间复杂度O(NlogN) 不满足时间复杂度要求 但能过 能过就行
 // 方法二:  先统计出现频率 用小根堆排序 时间复杂度O(Nlogk)
@@ -13,7 +14,7 @@ import (
 func Problem347() {
 	nums := []int{1, 1, 1, 2, 2, 3}
 	k := 2
-	fmt.Println(topKFrequent1(nums, k))
+	fmt.Println(topKFrequent2(nums, k))
 }
 
 // sort.Slice 排序
