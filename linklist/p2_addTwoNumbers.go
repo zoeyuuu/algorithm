@@ -1,7 +1,8 @@
 package linklist
 
-// 2. 两数相加
+// 2. 两数相加 medium 2023-12-19 107
 // 单链表
+// https://leetcode.cn/problems/add-two-numbers/description/
 
 func Problem1() {
 	l1 := &ListNode{Val: 2}
@@ -16,11 +17,13 @@ func Problem1() {
 	printList(result)
 }
 
-func addTwoNumbers(l1, l2 *ListNode) *ListNode {
-	var p, head *ListNode        //这样声明初始条件head==nil
-	carry := 0                   //进位
-	for l1 != nil || l2 != nil { //大循环
-		n1, n2 := 0, 0 //每个结点的值
+// 同时遍历两个链表 计算和及进位 存储到一个新链表(单独处理头结点
+func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
+	var head, tail *ListNode
+	carry := 0
+	// 大循环 只要一个链表有值就继续
+	for l1 != nil || l2 != nil {
+		n1, n2 := 0, 0
 		if l1 != nil {
 			n1 = l1.Val
 			l1 = l1.Next
@@ -29,20 +32,22 @@ func addTwoNumbers(l1, l2 *ListNode) *ListNode {
 			n2 = l2.Val
 			l2 = l2.Next
 		}
-		sum := n1 + n2 + carry
-		carry = sum / 10
-		sum %= 10
-		if head == nil { //判断头节点是否为空
-			head = &ListNode{Val: sum}
-			p = head
+		// 计算本位和进位
+		value := (n1 + n2 + carry) % 10
+		carry = (n1 + n2 + carry) / 10
+		// 链表为空单独处理
+		if head == nil {
+			head = &ListNode{Val: value}
+			tail = head
 		} else {
-			p.Next = &ListNode{Val: sum}
-			p = p.Next
+			tail.Next = &ListNode{Val: value}
+			tail = tail.Next
 		}
-
 	}
-	if carry > 0 { //最后有进位需要添加新节点
-		p.Next = &ListNode{Val: carry}
+	// 最后处理进位
+	if carry != 0 {
+		tail.Next = &ListNode{Val: carry}
+		tail = tail.Next
 	}
 	return head
 }

@@ -1,6 +1,6 @@
 package main
 
-import "leetcode/heap"
+import "algorithm/interview"
 
 func main() {
 	//linklist.Problem146()
@@ -15,6 +15,6 @@ func main() {
 	//sort.ProblemMergesort()
 	//greedy.Problem53()
 	//MonotoneStack.Problem84()
-	heap.Problem215()
-
+	//heap.Problem295()
+	interview.HW1102()
 }

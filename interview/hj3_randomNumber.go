@@ -7,7 +7,7 @@ import (
 	"fmt"
 )
 
-func main() {
+func hj3() {
 	N := 0
 	fmt.Scan(&N)
 	narray := make([]int, 501)

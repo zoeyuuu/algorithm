@@ -1,5 +1,8 @@
 package linklist
 
+// 19. 删除链表的倒数第 N 个结点 medium 2023-12-18 133
+// https://leetcode.cn/problems/remove-nth-node-from-end-of-list/description/
+
 func Problem19() {
 	l1 := &ListNode{Val: 1}
 	l1.Next = &ListNode{Val: 2}
@@ -11,19 +14,21 @@ func Problem19() {
 	printList(removeNthFromEnd(l1, 2))
 }
 
-// 方法一 O() O()
-// 第一次遍历得到链表长度 第二次遍历到第L−n+1个节点 删除
+// 一次遍历 快慢指针法
+// 要找到倒数第n个结点 (到倒数第n+1个节点进行删除 pre指针
+// pre指向dummy 判断一下+1-1 pre少走n步 即可到达 倒数第n+1个节点进行删除
 func removeNthFromEnd(head *ListNode, n int) *ListNode {
-	length := getLength(head)
-
-	//添加一个哑节点（dummy node），不需要对头节点进行单独判断
-	dummy := &ListNode{Val: 0, Next: head}
-	cur := dummy
-	for i := 0; i < length-n; i++ {
-		cur = cur.Next
+	dummy := &ListNode{Next: head}
+	pre := dummy
+	i := 1
+	for head != nil {
+		head = head.Next
+		// pre多走n步到达要删除的前一个节点的位置
+		if i > n {
+			pre = pre.Next
+		}
+		i++
 	}
-	cur.Next = cur.Next.Next
+	pre.Next = pre.Next.Next
 	return dummy.Next
 }
-
-//方法二 用栈存储

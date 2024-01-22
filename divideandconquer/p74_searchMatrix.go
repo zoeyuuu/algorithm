@@ -1,11 +1,11 @@
-package array
+package divideandconquer
 
 import (
 	"fmt"
 	"sort"
 )
 
-// 74 搜索二维矩阵 I medium
+// 74 搜索二维矩阵 I medium 2023-11-03 36 hot100
 // https://leetcode.cn/problems/search-a-2d-matrix/
 
 func Problem74() {
@@ -36,12 +36,15 @@ func searchMatrix11(matrix [][]int, target int) bool {
 }
 
 // 二分搜索
+// 利用两次二分搜索
+// 时间复杂度O(logm)+O(logn) = O(logmn)
 func searchMatrix12(matrix [][]int, target int) bool {
 	// 搜索范围：len(matrix)；返回第一个满足matrix[i][0] > target的下标
 	row := sort.Search(len(matrix), func(i int) bool { return matrix[i][0] > target }) - 1
 	if row < 0 {
 		return false
 	}
+	// 搜索target的位置 不存在则返回插入的位置
 	col := sort.SearchInts(matrix[row], target)
 	return col < len(matrix[row]) && matrix[row][col] == target
 }

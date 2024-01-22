@@ -52,6 +52,7 @@ func lastStoneWeight1(stones []int) int {
 	heap.Init(q)    // 初始化堆
 	for _, v := range stones {
 		heap.Push(q, v)
+		fmt.Println(q)
 	}
 	for q.Len() > 1 {
 		// 强制转换为int类型
