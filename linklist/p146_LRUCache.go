@@ -4,6 +4,12 @@ import "fmt"
 
 // 146. LRU 缓存 medium 2023-12-06 535
 // 实现lru缓存
+
+// !!!! 数据结构设计原因：
+// 要求1. 要让 put 和 get 方法的时间复杂度为 O(1) | 快速找某个 key 是否已存在并得到对应的 val  ---》 哈希表
+// 要求2. cache 中的元素必须有时序 && 支持在任意位置快速插入和删除元素 --》 双向链表 （单链表 链表尾部删除O(n)
+// ---> 双向链表+哈希表
+
 // https://leetcode.cn/problems/lru-cache/description/
 // struct LRUCache 包括四个成员size,capacity,map[int]*DLinkedNode,双链表的伪头部伪尾部
 // 要实现三个方法Constructor初始化、Get、Put
