@@ -1,6 +1,9 @@
 package main
 
-/*在一个闭合的环形公路上，共有 n 个加油站排列成一个圈，每个加油站都有一定数量的汽油供应。现在有一辆汽车打算在这条环形公路上行驶一周，它将从某个加油站出发，并希望在不断加油的情况下，顺利驶回起点。已知汽车的油箱容量是无限的，但为了保证环保，出发时汽车的油箱是空的。
+import "fmt"
+
+/*
+在一个闭合的环形公路上，共有 n 个加油站排列成一个圈，每个加油站都有一定数量的汽油供应。现在有一辆汽车打算在这条环形公路上行驶一周，它将从某个加油站出发，并希望在不断加油的情况下，顺利驶回起点。已知汽车的油箱容量是无限的，但为了保证环保，出发时汽车的油箱是空的。
 给定两个整数数组 gas 和 cost。数组 gas[i] 表示第 i 个加油站有 gas[i] 升汽油可供加油；数组 cost[i] 表示从第 i 个加油站前往下一个加油站（即第 (i+1)%n 个加油站）需要消耗的汽油量。
 你的任务是判断汽车是否能够在某个加油站出发，并绕环路行驶一周后返回该加油站。如果存在这样的出发点，请返回其加油站的编号；如果不存在，返回 -1。题目如果有解，则输出索引最小的加油站开始的解。
 输入描述：
@@ -24,3 +27,33 @@ package main
 加油站 2：汽油供应 3 升，前往下一站需耗费 5 升
 从这些数据可以看出，尽管加油站 3 不是汽油供应最多的站点，但它是唯一一个能保证汽车绕环路行驶一周的起点。
 */
+func main() {
+	var n int
+	fmt.Scanln(&n)
+	gas := make([]int, n)
+	cost := make([]int, n)
+	for i := 0; i < n; i++ {
+		fmt.Scan(&gas[i])
+	}
+	for i := 0; i < n; i++ {
+		fmt.Scan(&cost[i])
+	}
+	fmt.Println(canCompleteCircuit(gas, cost))
+}
+func canCompleteCircuit(gas, cost []int) int {
+	totalGas, totalCost := 0, 0
+	start, tank := 0, 0
+	for i := 0; i < len(gas); i++ {
+		totalGas += gas[i]
+		totalCost += cost[i]
+		tank += gas[i] - cost[i]
+		if tank < 0 {
+			start = i + 1
+			tank = 0
+		}
+	}
+	if totalGas < totalCost {
+		return -1
+	}
+	return start
+}

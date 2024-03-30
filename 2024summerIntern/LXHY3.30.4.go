@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
 	"sort"
 )
@@ -19,12 +20,13 @@ func main() {
 		fmt.Scan(&arr[i])
 	}
 	var left, right int
-	var ans string
+	var buf bytes.Buffer
 	for i := 0; i < n; i++ {
 		fmt.Scan(&left, &right)
-		ans += isTriangle(arr[left-1 : right])
+		result := isTriangle(arr[left-1 : right])
+		buf.WriteString(result)
 	}
-	fmt.Println(ans)
+	fmt.Println(buf.String())
 }
 func isTriangle(arr []int) string {
 	if len(arr) < 3 {

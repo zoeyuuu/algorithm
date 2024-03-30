@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 /*
 小杰在异世界探险时发现了一个有着奇妙法则的地方，灵犀帝国。这个法则让灵犀帝国的人不再为食物而烦恼。
 每逢每个月的最后一天，在灵犀帝国中的人会进入到其对应的奇妙领域，届时会有n轮食物大派送降临。
@@ -23,6 +25,20 @@ package main
 2
 6
 */
-func main() {
+const M = 998244353
 
+func main() {
+	var T int
+	fmt.Scan(&T)
+	for t := 0; t < T; T++ {
+		var n, m int
+		fmt.Scan(&n, &m)
+		var sum int64
+		for i := 0; i < n; i++ {
+			var l, r int
+			fmt.Scan(&l, &r)
+			sum += int64(r - l + 1)
+		}
+		fmt.Println(sum % M)
+	}
 }
