@@ -5,29 +5,46 @@
 1 3 2 5 4
 输出
 5 6 5 10 8
-*/
+输入描述：
+第一行输入一个正整数n，代表数组大小。
+第二行输入n个正整数a_i，代表小红拿到的数组。
+1\leq n \leq 200000
+1\leq a_i \leq 10^9
+
+30%
+ */
+
 package main
 
 import (
 	"fmt"
+	"strings"
+)
+
+package main
+
+import (
+"fmt"
+"strings"
 )
 
 func main() {
 	var n int
 	fmt.Scan(&n)
-	arr := make([]int64, n)
-	var max int64 = 0
+	arr := make([]int, n)
+	var max int = 0
 	for i := 0; i < n; i++ {
 		fmt.Scan(&arr[i])
 		if arr[i] > max {
 			max = arr[i]
 		}
 	}
+	var result strings.Builder
 	for i := 0; i < n; i++ {
-		ans := max
-		if arr[i]*2 > max {
-			ans = arr[i] * 2
+		if arr[i]*2 >max{
+			result.WriteString(fmt.Sprintf("%d ",arr[i]*2))
 		}
-		fmt.Print(ans, " ")
+		result.WriteString(fmt.Sprintf("%d ",max))
 	}
+	fmt.Println(result.String())
 }
