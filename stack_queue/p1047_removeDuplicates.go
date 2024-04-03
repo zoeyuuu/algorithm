@@ -1,5 +1,6 @@
 package stack_queue
 
+// 123
 // 1047. 删除字符串中的所有相邻重复项 easy  2023-08-04 21
 // https://leetcode.cn/problems/remove-all-adjacent-duplicates-in-string/description/
 // 很简单 用栈实现
