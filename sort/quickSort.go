@@ -34,10 +34,7 @@ func quicksort(nums []int, low, high int) {
 func partition(nums []int, low, high int) int {
 	// 随机pivot提升性能
 	pivotIndex := rng.Intn(high-low+1) + low
-	//pivotIndex := (low + high) / 2
-	// 先将标兵移到最后
-	nums[pivotIndex], nums[high] = nums[high], nums[pivotIndex]
-	pivot := nums[high]
+	pivot := nums[pivotIndex]
 	// i指向的是已经处理完的pivot左侧的最后一个元素(都小于pivot)
 	i := low - 1
 	for j := low; j <= high-1; j++ { //处理到high前一个位置
