@@ -47,6 +47,7 @@ func Constructor(capacity int) LRUCache {
 		tail:     &DLinkedNode{0, 0, nil, nil},
 	}
 	// 初始化 伪头部伪尾部要互相指向
+	// 注意是l
 	l.head.next = l.tail
 	l.tail.prev = l.head
 	return l
