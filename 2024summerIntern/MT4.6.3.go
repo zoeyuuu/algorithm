@@ -1,5 +1,11 @@
 package main
 
+import (
+	"fmt"
+	"math/big"
+	"sort"
+)
+
 /*
 小美有一个由 n 个互不相等的正整数构成的数组 a，但她一不小心把 a 弄丢了，他想要重新找到 a。
 好在她并不是一无所有，她还记得以下有关 a 的信息：
@@ -22,68 +28,135 @@ package main
 输出示例：
 1 8 6 4
 */
+package main
 
 import (
-	"fmt"
-	"sort"
+"fmt"
+"sort"
+"math/big"
 )
 
 func main() {
 	var n int
 	fmt.Scan(&n)
-	arr1 := make([]int, n-1)
-	arr2 := make([]int, n-1)
-	for i := 0; i < n-1; i++ {
-		fmt.Scan(&arr1[i])
+	arr1 := make([]*big.Int,n-1)
+	arr2 := make([]*big.Int,n-1)
+	for i:=0;i<n-1;i++{
+		arr1[i] = new(big.Int)
+		fmt.Scan(arr1[i])
 	}
-	sort.Ints(arr1)
-	for i := 0; i < n-1; i++ {
-		fmt.Scan(&arr2[i])
+	sort.Slice(arr1, func(i, j int) bool {
+		return arr1[i].Cmp(arr1[j]) < 0
+	})
+	for i:=0;i<n-1;i++{
+		arr2[i] = new(big.Int)
+		fmt.Scan(arr2[i])
 	}
-	sort.Ints(arr2)
-	pre := 0
-	for i := 0; i < n-1; i++ {
-		tmp := arr1[i] - pre
+	sort.Slice(arr2, func(i, j int) bool {
+		return arr2[i].Cmp(arr2[j]) < 0
+	})
+	pre := big.NewInt(0)
+	for i:=0;i<n-1;i++{
+		tmp := new(big.Int).Sub(arr1[i],pre)
 		pre = arr1[i]
 		arr1[i] = tmp
 	}
-	pre = 0
-	for i := 0; i < n-1; i++ {
-		tmp := arr2[i] - pre
+	pre = big.NewInt(0)
+	for i:=0;i<n-1;i++{
+		tmp := new(big.Int).Sub(arr2[i],pre)
 		pre = arr2[i]
 		arr2[i] = tmp
 	}
 	fmt.Println(arr1)
 	fmt.Println(arr2)
-	ans := make([]int, 0, n)
-	for i, j := 0, 0; i < n-1 || j < n-1; {
-		if i == n-1 {
+	ans := make([]*big.Int,0,n)
+	for i,j:=0,0; i<n-1 || j<n-1;{
+		if i == n-1 && j==n-2 {
 			ans = append(ans, arr2[j])
 			break
 		}
-		if j == n-1 {
+		if j == n-1 && i== n-2 {
 			ans = append(ans, arr1[i])
 			break
 		}
-		if arr1[i] != arr2[j] {
-			if arr1[i] == arr2[j+1] {
+		if arr1[i] != arr2[j]{
+			if j+1 <n-1&&arr1[i] == arr2[j+1]{
 				ans = append(ans, arr2[j])
 				j++
 			}
-			if arr2[j] == arr1[i+1] {
+			if i+1 <n-1&&arr2[j] == arr1[i+1]{
 				ans = append(ans, arr1[i])
 				i++
 			}
-
 		}
 		ans = append(ans, arr1[i])
 		i++
 		j++
 	}
-	for i, num := range ans {
+	for i,num := range ans{
 		fmt.Print(num)
-		if i < len(ans)-1 {
+		if i<len(ans) -1{
 			fmt.Print(" ")
 		}
 	}
 }
+
+//func main() {
+//	var n int
+//	fmt.Scan(&n)
+//	arr1 := make([]int, n-1)
+//	arr2 := make([]int, n-1)
+//	for i := 0; i < n-1; i++ {
+//		fmt.Scan(&arr1[i])
+//	}
+//	sort.Ints(arr1)
+//	for i := 0; i < n-1; i++ {
+//		fmt.Scan(&arr2[i])
+//	}
+//	sort.Ints(arr2)
+//	pre := 0
+//	for i := 0; i < n-1; i++ {
+//		tmp := arr1[i] - pre
+//		pre = arr1[i]
+//		arr1[i] = tmp
+//	}
+//	pre = 0
+//	for i := 0; i < n-1; i++ {
+//		tmp := arr2[i] - pre
+//		pre = arr2[i]
+//		arr2[i] = tmp
+//	}
+//	fmt.Println(arr1)
+//	fmt.Println(arr2)
+//	ans := make([]int, 0, n)
+//	for i, j := 0, 0; i < n-1 || j < n-1; {
+//		if i == n-1 {
+//			ans = append(ans, arr2[j])
+//			break
+//		}
+//		if j == n-1 {
+//			ans = append(ans, arr1[i])
+//			break
+//		}
+//		if arr1[i] != arr2[j] {
+//			if arr1[i] == arr2[j+1] {
+//				ans = append(ans, arr2[j])
+//				j++
+//			}
+//			if arr2[j] == arr1[i+1] {
+//				ans = append(ans, arr1[i])
+//				i++
+//			}
+//
+//		}
+//		ans = append(ans, arr1[i])
+//		i++
+//		j++
+//	}
+//	for i, num := range ans {
+//		fmt.Print(num)
+//		if i < len(ans)-1 {
+//			fmt.Print(" ")
+//		}
+//	}
+//}

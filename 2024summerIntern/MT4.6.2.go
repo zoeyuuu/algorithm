@@ -17,25 +17,34 @@ package main
 2
 */
 
+package main
+
 import (
-	"fmt"
+"fmt"
 )
 
 func main() {
 	var n int
 	fmt.Scan(&n)
-	arr := make([]string, n)
+	arr := make([]string,n)
 	ans := 0
-	for i := 0; i < n; i++ {
+	for i:=0;i<n;i++{
 		fmt.Scan(&arr[i])
-		if arr[i][len(arr[i])-1] == 'i' {
-			if arr[i][len(arr[i])-2] == '0' {
-				if '0' <= arr[i][len(arr[i])-2] && arr[i][len(arr[i])-2] <= '9' {
-					ans++
+		if arr[i][len(arr[i])-1] == 'i'{
+			if len(arr[i]) ==1 {
+				ans ++
+				continue
+			}
+			j:=len(arr[i])-2
+			if arr[i][j] == '0'{
+				for ;j>0 && arr[i][j] == '0';j--{}
+				if arr[i][j] <= '9' && arr[i][j] >= '1'{
+					ans ++
 				}
-			} else {
-				ans++
+			}else{
+				ans ++
 			}
 		}
 	}
+	fmt.Println(n-ans)
 }
