@@ -26,7 +26,9 @@ func longestPalindrome1(s string) string {
 	for i := 0; i < n; i++ {
 		dp[i] = make([]bool, n)
 	}
+	// 注意循环起始位置
 	for i := n - 1; i >= 0; i-- {
+		// j>=i才有意义
 		for j := i; j < n; j++ {
 			if s[i] == s[j] {
 				if j-i <= 1 {

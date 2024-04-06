@@ -11,7 +11,9 @@ func isHappy(n int) bool {
 	//哈希表mp存储一系列数字以判断是否进入循环
 	mp := map[int]bool{}
 	// 终止条件：1、n==1是快乐数 2、
-	for ; n != 1 && !mp[n]; n, mp[n] = step(n), true {
+	for n != 1 && !mp[n] {
+		mp[n] = true
+		n = step(n)
 	}
 	return n == 1
 }
