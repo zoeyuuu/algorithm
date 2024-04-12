@@ -36,6 +36,14 @@ import (
 "math/big"
 )
 
+package main
+
+import (
+"fmt"
+"sort"
+"math/big"
+)
+
 func main() {
 	var n int
 	fmt.Scan(&n)
@@ -80,18 +88,23 @@ func main() {
 			break
 		}
 		if arr1[i] != arr2[j]{
-			if j+1 <n-1&&arr1[i] == arr2[j+1]{
+			if arr1[i].Cmp(arr2[j+1]) == 0{
+				fmt.Println(i,j)
 				ans = append(ans, arr2[j])
 				j++
+				continue
 			}
-			if i+1 <n-1&&arr2[j] == arr1[i+1]{
+			if i+1 <n-1 &&arr2[j].Cmp(arr1[i+1]) == 0{
 				ans = append(ans, arr1[i])
+				fmt.Println(i,j)
 				i++
+				continue
 			}
+		}else{
+			ans = append(ans, arr1[i])
+			i++
+			j++
 		}
-		ans = append(ans, arr1[i])
-		i++
-		j++
 	}
 	for i,num := range ans{
 		fmt.Print(num)
