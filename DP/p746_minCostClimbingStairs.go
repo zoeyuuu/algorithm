@@ -15,12 +15,6 @@ func Problem746() {
 func minCostClimbingStairs(cost []int) int {
 	dp := make([]int, len(cost)+1)
 	n := len(cost)
-	if n == 1 {
-		return cost[0]
-	}
-	if n == 2 {
-		return min(cost[0], cost[1])
-	}
 	dp[0], dp[1] = 0, 0
 	for i := 2; i <= len(cost); i++ {
 		dp[i] = min(dp[i-1]+cost[i-1], dp[i-2]+cost[i-2])

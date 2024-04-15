@@ -16,38 +16,32 @@ func main() {
 		return arr[i] > arr[j]
 	})
 	ans := n + 1
-	var path []int
-	var dfs func(index, sum int, flag bool)
-	dfs = func(index, sum int, flag bool) {
+	var dfs func(index, sum, num int, flag bool)
+	dfs = func(index, sum, num int, flag bool) {
 		if sum > target {
 			return
 		}
 		if sum == target {
-			l := len(path)
-			ans = min(ans, l)
+			ans = min(ans, num)
 			return
 		}
 		for i := index; i < n; i++ {
-			if index > 0 && arr[i] == arr[i-1] {
+			if i > index && arr[i] == arr[i-1] {
 				continue
 			}
-			path = append(path, arr[i])
 			if flag == true {
-				dfs(i+1, sum+arr[i], true)
-				dfs(i+1, sum+arr[i]/2, false)
-				path = path[:len(path)-1]
+				dfs(i+1, sum+arr[i], num+1, true)
+				dfs(i+1, sum+arr[i]/2, num+1, false)
 			} else {
-				dfs(i+1, sum+arr[i], false)
-				path = path[:len(path)-1]
+				dfs(i+1, sum+arr[i], num+1, false)
 			}
 		}
 	}
-	dfs(0, 0, true)
+	dfs(0, 0, 0, true)
 	if ans == n+1 {
-		fmt.Println(-1)
-	} else {
-		fmt.Println(ans)
+		ans = -1
 	}
+	fmt.Println(ans)
 }
 func min(x, y int) int {
 	if x < y {

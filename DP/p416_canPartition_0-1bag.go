@@ -7,7 +7,8 @@ import "fmt"
 // https://leetcode.cn/problems/partition-equal-subset-sum/description/
 
 // 利用0/1背包思想：原来dp[j]代表的是容量为j的背包，所背的最大物品价值
-// （本题也是每个数字只能选一次 价值和重量等价）迁移到本题：dp[j] = j时表示容量为j的正好能装dp[j]的重量（数字和）
+// （本题也是每个数字只能选一次 价值和重量等价）迁移到本题：dp[weight] = weight时表示容量为j的正好能装dp[j]的重量（数字和）
+// 本题求dp[target]即target大小的背包装数 最大能装和为多少的数字 若dp[target] = target 则成功
 // 本题即看dp[target] =? sum/2
 // 01背包（一维数组）的递推公式为：dp[j] = max(dp[j], dp[j - weight[i]] + value[i])
 // 本题 dp[j] = max(dp[j], dp[j-nums[i]]+nums[i])
