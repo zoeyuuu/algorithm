@@ -5,7 +5,7 @@ package unionFind
 type unionFind struct {
 	parent, size []int
 }
-
+0
 // 构造函数，用于创建并初始化一个新的并查集实例
 func newUnionFind(n int) *unionFind {
 	parent := make([]int, n)

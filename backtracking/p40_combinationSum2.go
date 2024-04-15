@@ -10,7 +10,7 @@ import (
 // 2.本题数组candidates的元素是有重复的 要去重
 // ⭐去重分两种情况
 // a)第一种同一层去重 也就是candidates=122222224 target = 7 (本题)  对于第二层会得到无数个124 去重 只需保留一个 124
-//  -----> 对数组进行排序 在for循环遍历一层时if i > index && candidates[i] == candidates[i-1] { continue}
+//  -----> 对数组进行排序 在for循环遍历一层时if i > index && candidates[i] == candidates[i-1] {continue}
 // b)第二种是路径(树枝)去重 也就是candidates=122222224 target = 7 不能够得到222的结果
 //  -----> 在a)先排序去重基础上加if i > 0 && i == index && candidates[i] == candidates[i-1] {continue} 深度递归的时候判断是否和前一个元素一致
 //  -----> 或者直接先排序建立一个新的无重复元素的数组
@@ -20,6 +20,7 @@ func Problem40() {
 	target := 8
 	fmt.Println(combinationSum22(candidates, target))
 }
+
 func combinationSum2(candidates []int, target int) [][]int {
 	ans := [][]int{}
 	n := len(candidates)

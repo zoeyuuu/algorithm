@@ -12,7 +12,8 @@ func Main() {
 	// 将nums类型转换为sort.IntSlice的sort.Interface接口
 	sort.Sort(sort.IntSlice(nums))
 	// sort.Ints自动将[]int类型转换为sort.IntSlice类型 然后调用sort.Sort()
-	sort.Ints(nums)                    // [2 3 4 5 5 7]
+	sort.Ints(nums) // [2 3 4 5 5 7]
+
 	sort.IsSorted(sort.IntSlice(nums)) // true
 	sort.IntsAreSorted(nums)           //true
 	// search

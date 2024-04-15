@@ -31,7 +31,7 @@ func restoreIpAddresses(s string) []string {
 		}
 		// 广度递归
 		for i := index; i < n; i++ {
-			// 如果有前导0 跳过
+			// 如果有前导0 跳过 05这种形式
 			if i != index && s[index] == '0' {
 				break
 			}

@@ -17,7 +17,7 @@ func Problem300() {
 }
 
 // 动态规划 关键点在于dp[i]的意义 如果单纯指0~i的最长递增序列的长度 那递推公式很难推
-// dp[i] 以nums[i]结尾的最长递增序列的长度 dp[i] = max(dp[j] for dp[j]<dp[i) + 1
+// dp[i] 以nums[i]结尾的最长递增序列的长度 dp[i] = max(dp[j] for dp[j]<dp[i]) + 1
 // 最终遍历一遍dp数组取dp[i]最大值
 // 时间复杂度O(n^2)
 func lengthOfLIS(nums []int) int {

@@ -1,4 +1,4 @@
-package array
+package binarySearch
 
 // 33搜索旋转排序数组 medium 要求时间复杂度O(logn)
 // 类二分搜索
@@ -26,7 +26,7 @@ func search(nums []int, target int) int {
 		switch {
 		case nums[mid] == target:
 			return mid
-		case nums[0] <= nums[mid]: //左侧有序
+		case nums[left] <= nums[mid]: //左侧有序
 			if nums[left] <= target && target <= nums[mid] { //target在左侧有序区间 在左侧有序区间查找
 				right = mid - 1
 			} else { //否则在右侧无序区间查找

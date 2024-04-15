@@ -2,6 +2,7 @@ package DP
 
 import (
 	"fmt"
+	"math"
 )
 
 // 122. 买卖股票的最佳时机 I easy
@@ -40,4 +41,15 @@ func maxProfit1(prices []int) int {
 		dp[i][1] = max(dp[i-1][1], dp[i-1][0]+prices[i])
 	}
 	return dp[n-1][1]
+}
+
+// 贪心 记录已遍历的最小值 然后计算当前值-最小值 求最大值
+func maxProfit(prices []int) int {
+	result := 0
+	min := math.MaxInt32
+	for i := range prices {
+		min = Min(min, prices[i])
+		result = Max(result, prices[i]-min)
+	}
+	return result
 }

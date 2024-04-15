@@ -1,5 +1,7 @@
 package linklist
 
+import "container/heap"
+
 // 23 合并K个排序链表 hard
 // https://leetcode.cn/problems/merge-k-sorted-lists/description/
 
@@ -17,6 +19,48 @@ func Problem23() {
 
 	lists := []*ListNode{l1, l2, l3}
 	printList(mergeKLists2(lists))
+}
+
+// 2024.4.12 用堆实现
+func mergeKLists(lists []*ListNode) *ListNode {
+	dummy := &ListNode{}
+	cur := dummy
+	h := hp{}
+	for _, v := range lists {
+		if v != nil {
+			h = append(h, v)
+		}
+	}
+	heap.Init(&h)
+	for len(h) > 0 {
+		node := heap.Pop(&h).(*ListNode)
+		if node.Next != nil {
+			heap.Push(&h, node.Next)
+		}
+		cur.Next = node
+		cur = cur.Next
+	}
+	return dummy.Next
+}
+
+type hp []*ListNode
+
+func (h *hp) Len() int {
+	return len(*h)
+}
+func (h *hp) Swap(i, j int) {
+	(*h)[i], (*h)[j] = (*h)[j], (*h)[i]
+}
+func (h *hp) Less(i, j int) bool {
+	return (*h)[i].Val < (*h)[j].Val
+}
+func (h *hp) Push(x any) {
+	*h = append(*h, x.(*ListNode))
+}
+func (h *hp) Pop() any {
+	v := (*h)[len(*h)-1]
+	*h = (*h)[:len(*h)-1]
+	return v
 }
 
 // 方法一 每次都两两合并 (暴力）
