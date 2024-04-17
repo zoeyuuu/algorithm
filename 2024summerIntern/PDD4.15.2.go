@@ -1,38 +1,50 @@
 package main
 
-import "fmt"
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"strconv"
+)
 
 func main() {
 	var n int
 	fmt.Scan(&n)
-	arr := make([]int, n)
-	for i := 0; i < n; i++ {
-		fmt.Scan(&arr[i])
+	arr := make([]int64, n)
+	// for i := 0; i < n; i++ {
+	// 	fmt.Scan(&arr[i])
+	// }
+	scanner := bufio.NewScanner(os.Stdin)
+	scanner.Split(bufio.ScanWords)
+	for i := 0; i < n && scanner.Scan(); i++ {
+		num, _ := strconv.Atoi(scanner.Text())
+		arr[i] = int64(num)
 	}
 	var inter [][]int
 	start := 0
 	for i := 1; i < n; i++ {
 		if arr[i] == arr[i-1] {
-			inter = append(inter, arr[start:i])
+			inter = append(inter, []int{start, i})
 			start = i
 		}
 	}
-	result := 0
-	inter = append(inter, arr[start:])
+	var result int64
+	inter = append(inter, []int{start, n})
 	for _, v := range inter {
-		result += subarraySum(v)
+		result += subarraySum(arr[v[0]:v[1]])
+		result %= 10000007
 	}
 	//fmt.Println(inter)
 	fmt.Println(result)
 }
-func subarraySum(arr []int) int {
+func subarraySum(arr []int64) int64 {
 	n := len(arr)
-	sum := 0
-	ans := 0
-	pre := make([]int, n)
+	var sum int64
+	var ans int64
+	pre := make([]int64, n)
 	pre[0] = arr[0]
 	for i := 1; i < n; i++ {
-		pre[i] = pre[i-1] + arr[i]
+		pre[i] = (pre[i-1] + arr[i]) % 10000007
 	}
 	for i := 0; i < n; i++ {
 		sum += arr[i]
@@ -45,5 +57,5 @@ func subarraySum(arr []int) int {
 			}
 		}
 	}
-	return ans - sum
+	return (ans - sum) % 10000007
 }
