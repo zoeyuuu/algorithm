@@ -14,8 +14,6 @@
 30%
  */
 
-package main
-
 import (
 	"fmt"
 	"strings"

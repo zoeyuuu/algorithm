@@ -9,6 +9,9 @@ import "fmt"
 func Problem28() {
 	haystack := "esadbutsad"
 	needle := "sad"
+	next := make([]int, 5)
+	getNext(next, "abcab")
+	fmt.Println(next)
 	fmt.Println(strStr(haystack, needle))
 }
 func strStr(haystack string, needle string) int {
@@ -17,11 +20,12 @@ func strStr(haystack string, needle string) int {
 		return 0
 	}
 	next := make([]int, n)
-	// 求next数组
+	// 求next数组 next[i] 表示对于子串 s[0:i]，该子串的最长相同前缀和后缀的长度。
 	getNext(next, needle)
 	j := 0
 	for i := 0; i < len(haystack); i++ {
 		// 匹配不成功时 j回退到上一个next[j-1]的位置
+		// ！ 注意是for
 		for j > 0 && haystack[i] != needle[j] {
 			j = next[j-1]
 		}
@@ -50,8 +54,9 @@ func strStr(haystack string, needle string) int {
 func getNext(next []int, s string) {
 	next[0] = 0
 	j := 0
+	// ！！ i从1开始
 	for i := 1; i < len(s); i++ {
-		// 不相等回退
+		// 不相等回退 j=0 直接比较
 		for j > 0 && s[i] != s[j] {
 			j = next[j-1]
 		}

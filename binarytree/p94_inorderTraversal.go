@@ -36,8 +36,8 @@ func inorderTraversal1(root *TreeNode) (res []int) {
 // 中序遍历 迭代法
 // 一直向左（左） 直到为空时出栈访问（中） 转向右子树（右）
 func inorderTraversal2(root *TreeNode) (res []int) {
-	stack := []*TreeNode{} //初始化栈
-	p := root              //遍历指针
+	stack := []*TreeNode{} // 初始化栈
+	p := root              // 遍历指针
 	// 栈不空或者p不为空时循环
 	for p != nil || len(stack) > 0 {
 		for p != nil { //p不为空 入栈 一路向左
