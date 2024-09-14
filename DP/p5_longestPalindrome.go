@@ -35,7 +35,7 @@ func longestPalindrome1(s string) string {
 					dp[i][j] = true
 					// 长度判断
 					if j-i+1 > maxLen {
-						maxLen = j - i
+						maxLen = j - i + 1
 						ans = s[i : j+1]
 					}
 				} else if dp[i+1][j-1] {
